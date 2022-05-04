@@ -1,25 +1,25 @@
 #include <iostream>
 #include <vector>
-#include <unordered_set>
+#include <unordered_map>
 using namespace std;
 
-vector<int> pairSum(vector<int> arr, int target)
+vector<int> pairSum(vector<int> &nums, int target)
 {
-  unordered_set<int> set;
+  unordered_map<int, int> map;
   vector<int> result;
 
-  for (int i = 0; i < arr.size(); i++)
+  for (int i = 0; i < nums.size(); i++)
   {
-    int x = target - arr[i];
+    int x = target - nums[i];
 
-    if (set.find(x) != set.end())
+    if (map.find(x) != map.end())
     {
-      result.push_back(x);
-      result.push_back(arr[i]);
+      result.push_back(map[x]);
+      result.push_back(i);
       return result;
     }
 
-    set.insert(arr[i]);
+    map[nums[i]] = i;
   }
 
   return result;
