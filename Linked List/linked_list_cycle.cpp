@@ -40,23 +40,17 @@ bool hasCycle(ListNode *head)
   }
 
   ListNode *slow = head;
-  ListNode *fast = head->next;
+  ListNode *fast = head;
 
-  while (fast != nullptr)
+  while (fast != nullptr and fast->next != nullptr)
   {
+    slow = slow->next;
+    fast = fast->next->next;
+
     if (slow == fast)
     {
       return true;
     }
-
-    slow = slow->next;
-
-    if (fast->next == nullptr)
-    {
-      return false;
-    }
-
-    fast = fast->next->next;
   }
 
   return false;
