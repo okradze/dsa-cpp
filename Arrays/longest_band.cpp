@@ -3,22 +3,22 @@
 #include <unordered_set>
 using namespace std;
 
-int longestBand(vector<int> arr)
+int longestBand(vector<int> &nums)
 {
-  int n = arr.size();
+  int n = nums.size();
   unordered_set<int> set;
   int longest = 0;
 
   // Store every number in set
-  for (int num : arr)
+  for (int num : nums)
   {
     set.insert(num);
   }
 
-  for (int num : arr)
+  for (int num : nums)
   {
     // If number is not start of band continue loop
-    if (set.find(num - 1) == set.end())
+    if (set.find(num - 1) != set.end())
     {
       continue;
     }
@@ -44,9 +44,9 @@ int longestBand(vector<int> arr)
 
 int main()
 {
-  vector<int> arr{1, 9, 3, 0, 18, 5, 2, 4, 10, 7, 12, 6};
+  vector<int> nums{100, 4, 200, 1, 3, 2};
 
-  cout << longestBand(arr) << endl;
+  longestBand(nums);
 
   return 0;
 }
